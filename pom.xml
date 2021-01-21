@@ -17,6 +17,7 @@
 		<java.version>11</java.version>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
+		<pmd.plugin.version>3.11.0</pmd.plugin.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -57,8 +58,19 @@
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.8.1</version>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>${pmd.plugin.version}</version>
+					<configuration>
+						<failOnViolation>true</failOnViolation>
+						<printFailingErrors>true</printFailingErrors>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>check</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
